@@ -1,11 +1,13 @@
+#!/usr/bin/env bash
+
+RESET="#[fg=brightwhite,bg=#15161e,nobold,noitalics,nounderscore,nodim]"
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 BG1="#011627"
 BG2="#82aaff"
 BG3="#112630"
 FG1="#d6deeb"
 FG2="#637777"
-
-RESET="#[fg=brightwhite,bg=#15161e,nobold,noitalics,nounderscore,nodim]"
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 tmux set -g status-left-length 80
 tmux set -g status-right-length 150
