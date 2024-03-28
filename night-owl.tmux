@@ -1,56 +1,41 @@
-# COLORSCHEME: night owl
-
 BG1="#011627"
 BG2="#82aaff"
 BG3="#112630"
 FG1="#d6deeb"
 FG2="#637777"
 
-tmux set-option -g status "on"
+RESET="#[fg=brightwhite,bg=#15161e,nobold,noitalics,nounderscore,nodim]"
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 tmux set -g status-left-length 80
 tmux set -g status-right-length 150
-#Session name
-tmux set -g status-left "#[fg=#1F2335,bg=#6441a5,bold] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[fg=#ffffff,bg=#6441a5,bold,nodim]#S $RESET"
 
-# default statusbar colors
-tmux set -g status-bg $BG3
-tmux set -g status-fg $FG1
+# Highlight colors
+tmux set -g mode-style "fg=#a9b1d6,bg=#2A2F41"
+tmux set -g message-style "bg=#7aa2f7,fg=#2A2F41"
+tmux set -g message-command-style "fg=#c0caf5,bg=#2A2F41"
 
-# default window title colors
-tmux set-window-option -g window-status-style bg=$BG1,fg=$BG3
-tmux set-window-option -g window-status-activity-style bg=$BG2,fg=colour248
+tmux set -g pane-border-style "fg=#2A2F41"
+tmux set -g pane-active-border-style "fg=#7aa2f7"
 
-# active window title colors
-tmux set-window-option -g window-status-current-style fg=$BG1,bg=$BG2
+tmux set -g status-style bg="#1A1B26"
 
-# pane border
-tmux set-option -g pane-active-border-style fg=$FG2
-tmux set-option -g pane-border-style fg=$FG2
+SCRIPTS_PATH="$CURRENT_DIR/src"
 
-# message infos
-tmux set-option -g message-style bg=$BG1,fg=$BG2
+default_window_id_style="digital"
+default_pane_id_style="hsquare"
+default_zoom_id_style="dsquare"
 
-# commands
-tmux set-option -g message-command-style bg=$BG1,fg=$FG1
+# Session name
+tmux set -g status-left "#[fg=#1F2335,bg=#6441a5,bold] #{?client_prefix,󰠠 ,#[dim]󰤂 }#[fg=FG2,bg=#6441a5,bold,nodim]#S $RESET"
 
-# pane number display
-tmux set-option -g display-panes-active-colour colour250 #fg2
-tmux set-option -g display-panes-colour colour237 #bg1
-
-# clock
-tmux set-window-option -g clock-mode-colour colour24 #blue
-
-# bell
-tmux set-window-option -g window-status-bell-style fg=colour229,bg=colour88 #bg, red
-
-tmux set-option -g status-justify "left"
-tmux set-option -g status-left-length "80"
-tmux set-option -g status-right-length "80"
-tmux set-window-option -g window-status-separator ""
-
-tmux set-option -g status-left ""
-tmux set-option -g status-right "#[fg=$FG1,bg=$BG3] %Y-%m-%d %H:%M #[fg=$BG1, bg=$BG2] #h "
-
+#+--- Windows ---+
+# Focus
 tmux set-window-option -g window-status-current-format "#[fg=$BG1, bg=$BG2] #I:#[fg=$BG1, bg=$BG2, bold] #W "
+
+# Unfocused
 tmux set-window-option -g window-status-format "#[fg=$FG1,bg=$BG3] #I: #W "
+
+#+--- Bars RIGHT ---+
+tmux set-option -g status-right "#[fg=$FG1,bg=$BG3] %Y-%m-%d %H:%M #[fg=$BG1, bg=$BG2] #h "
+tmux set -g window-status-separator ""
